@@ -1,0 +1,15 @@
+<div class="list-reservation">
+    <button class="button" (click)="goToCreateReservation()">Ajouter une réservation</button>
+    <ng-container *ngFor="let uneReservation of listReservation">
+        <mat-card appearance="outlined">
+            <mat-card-content class="mat-card">
+                <div>Nom étudiant : {{uneReservation.idEtud}}<br>
+                Nom soirée : {{uneReservation.idSoiree}}<br>
+                Date réservation : {{uneReservation.dateReserv}}<br>
+                Status réservation : {{uneReservation.statusReserv}}<br>
+                <button>Modifier</button><button>Supprimer</button>
+                </div>
+            </mat-card-content>
+        </mat-card><br>
+    </ng-container>
+</div>

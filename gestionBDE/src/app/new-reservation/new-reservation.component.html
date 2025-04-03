@@ -1,0 +1,104 @@
+<p>new-reservation works!</p>
+<!-- <div class="monForm">
+    <section class="subForm saisieForm">
+        <h2 style="text-align: center;">Nouvelle réservation</h2>
+        <form [formGroup]="formulaire">
+            <div class="form-group">
+                <label for="title">Titre</label><br>
+                <div class="input">
+                    <input type="text" class="form-control" id="title" formControlName="title"/>
+                    <div *ngIf="formulaire.get('title')?.invalid &&
+                            formulaire.get('title')?.errors &&
+                            (formulaire.get('title')?.dirty || formulaire.get('title'))">
+                        <small class="text-danger" *ngIf="formulaire.get('title')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                        <small class="text-danger" *ngIf="formulaire.get('title')?.hasError('minlength')">
+                            Ce champ doit comporter au moins 6 caractères.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="author">Auteur</label><br>
+                <div class="input">
+                    <input type="text" class="form-control" id="author" formControlName="author"/>
+                    <div *ngIf="formulaire.get('author')?.invalid &&
+                            formulaire.get('author')?.errors &&
+                            (formulaire.get('author')?.dirty || formulaire.get('author'))">
+                        <small class="text-danger" *ngIf="formulaire.get('author')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                        <small class="text-danger" *ngIf="formulaire.get('author')?.hasError('minlength')">
+                            Ce champ doit comporter au moins 6 caractères.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="price">Prix</label><br>
+                <div class="input">
+                    <input type="number" class="form-control" id="price" formControlName="price"/>
+                    <div *ngIf="formulaire.get('price')?.invalid &&
+                            formulaire.get('price')?.errors &&
+                            (formulaire.get('price')?.dirty || formulaire.get('price'))">
+                        <small class="text-danger" *ngIf="formulaire.get('price')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="thumbnail">Couverture</label><br>
+                <div class="input">
+                    <input type="text" class="form-control" id="thumbnail" formControlName="thumbnail"/>
+                    <div *ngIf="formulaire.get('thumbnail')?.invalid &&
+                            formulaire.get('thumbnail')?.errors &&
+                            (formulaire.get('thumbnail')?.dirty || formulaire.get('thumbnail'))">
+                        <small class="text-danger" *ngIf="formulaire.get('thumbnail')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateDeSortie">Date De Sortie</label><br>
+                <div class="input">
+                    <input type="date" class="form-control" id="dateDeSortie" formControlName="dateDeSortie"/>
+                    <div *ngIf="formulaire.get('dateDeSortie')?.invalid &&
+                            formulaire.get('dateDeSortie')?.errors &&
+                            (formulaire.get('dateDeSortie')?.dirty || formulaire.get('dateDeSortie'))">
+                        <small class="text-danger" *ngIf="formulaire.get('dateDeSortie')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="quantite">Quantite</label><br>
+                <div class="input">
+                    <input type="number" class="form-control" id="quantite" formControlName="quantite"/>
+                    <div *ngIf="formulaire.get('quantite')?.invalid &&
+                            formulaire.get('quantite')?.errors &&
+                            (formulaire.get('quantite')?.dirty || formulaire.get('quantite'))">
+                        <small class="text-danger" *ngIf="formulaire.get('quantite')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                    </div>
+                </div>
+            </div><br>
+            <button type="submit" (click)="ajout()" [disabled]="formulaire.invalid">Valider</button>
+        </form>
+    </section>
+    <section class="subForm visuForm">
+        <h2 style="text-align: center;">Vue du CD</h2>
+        <div *ngIf="currentCD !== undefined">
+            <h3>{{currentCD.title}}</h3>
+            <p>Sortie le : {{currentCD.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
+            <p>Auteur / groupe : {{currentCD.author}}</p>
+            <p>Prix : {{currentCD.price | currency: 'EUR'}}</p>
+            <p>Quantité : {{currentCD.quantite}}</p>
+            <img [src]="currentCD.thumbnail" alt="{{currentCD.title}}">
+        </div>
+    </section>
+</div> -->

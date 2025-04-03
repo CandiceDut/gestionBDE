@@ -1,0 +1,14 @@
+<div class="list-goodie">
+    <button>Ajouter un goodie</button>
+    <ng-container *ngFor="let unGoodie of listGoodie">
+        <mat-card appearance="outlined">
+            <mat-card-content class="mat-card">
+                <div>Nom du goodie : {{unGoodie.nomGoodie}}<br>
+                Quantité : {{unGoodie.quantite}}<br>
+                Description : {{unGoodie.description}}<br>
+                Coût unitaire : {{unGoodie.coutUnitaire}}<br>
+                <button>Modifier</button><button>Supprimer</button></div><br>
+            </mat-card-content>
+        </mat-card><br>
+    </ng-container>
+</div>

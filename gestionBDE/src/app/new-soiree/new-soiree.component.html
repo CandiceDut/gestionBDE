@@ -1,0 +1,105 @@
+<div class="monForm" style="text-align: center;">
+    <section class="subForm saisieForm">
+        <h2 style="text-align: center;">Nouvelle soirée</h2>
+        <form [formGroup]="formulaire">
+            <mat-form-field>
+                <mat-label for="nomSoiree">Nom</mat-label><br>
+                <input matInput type="text" class="form-control" id="nomSoiree" formControlName="nomSoiree">
+                <div *ngIf="formulaire.get('nomSoiree')?.invalid &&
+                        formulaire.get('nomSoiree')?.errors &&
+                        (formulaire.get('nomSoiree')?.dirty || formulaire.get('nomSoiree'))">
+                    <small class="text-danger" *ngIf="formulaire.get('nomSoiree')?.hasError('required')">
+                        Ce champ est requis.
+                    </small>
+                    <small class="text-danger" *ngIf="formulaire.get('nomSoiree')?.hasError('minlength')">
+                        Ce champ doit comporter au moins 4 caractères.
+                    </small>
+                </div>
+            </mat-form-field>
+            <div class="form-group">
+                <label for="lieu">Lieu</label><br>
+                <mat-form-field>
+                    <input type="text" class="form-control" id="lieu" formControlName="lieu"/>
+                    <div *ngIf="formulaire.get('lieu')?.invalid &&
+                            formulaire.get('lieu')?.errors &&
+                            (formulaire.get('lieu')?.dirty || formulaire.get('lieu'))">
+                        <small class="text-danger" *ngIf="formulaire.get('lieu')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                        <small class="text-danger" *ngIf="formulaire.get('lieu')?.hasError('minlength')">
+                            Ce champ doit comporter au moins 6 caractères.
+                        </small>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <label for="dateHeure">Date et heure</label><br>
+                <div class="input">
+                    <input type="date" class="form-control" id="dateHeure" formControlName="dateHeure"/>
+                    <input type="time" class="form-control" id="dateHeure" formControlName="dateHeure"/>
+                    <div *ngIf="formulaire.get('dateHeure')?.invalid &&
+                            formulaire.get('dateHeure')?.errors &&
+                            (formulaire.get('dateHeure')?.dirty || formulaire.get('dateHeure'))">
+                        <small class="text-danger" *ngIf="formulaire.get('dateHeure')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prix">Prix</label><br>
+                <div class="input">
+                    <input type="number" class="form-control" id="prix" formControlName="prix"/>
+                    <div *ngIf="formulaire.get('prix')?.invalid &&
+                            formulaire.get('prix')?.errors &&
+                            (formulaire.get('prix')?.dirty || formulaire.get('prix'))">
+                        <small class="text-danger" *ngIf="formulaire.get('prix')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="capaciteMax">Capacite maximale</label><br>
+                <div class="input">
+                    <input type="number" class="form-control" id="capaciteMax" formControlName="capaciteMax"/>
+                    <div *ngIf="formulaire.get('capaciteMax')?.invalid &&
+                            formulaire.get('capaciteMax')?.errors &&
+                            (formulaire.get('capaciteMax')?.dirty || formulaire.get('capaciteMax'))">
+                        <small class="text-danger" *ngIf="formulaire.get('capaciteMax')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="theme">Theme</label><br>
+                <div class="input">
+                    <input type="text" class="form-control" id="theme" formControlName="theme"/>
+                    <div *ngIf="formulaire.get('theme')?.invalid &&
+                            formulaire.get('theme')?.errors &&
+                            (formulaire.get('theme')?.dirty || formulaire.get('theme'))">
+                        <small class="text-danger" *ngIf="formulaire.get('theme')?.hasError('required')">
+                            Ce champ est requis.
+                        </small>
+                        <small class="text-danger" *ngIf="formulaire.get('lieu')?.hasError('minlength')">
+                            Ce champ doit comporter au moins 3 caractères.
+                        </small>
+                    </div>
+                </div>
+            </div><br>
+            <button type="submit" (click)="ajout()" [disabled]="formulaire.invalid">Valider</button>
+        </form>
+    </section>
+    <section class="subForm visuForm">
+        <h2 style="text-align: center;">Vue de la soirée</h2>
+        <div *ngIf="currentSoiree !== undefined">
+            <h3>{{currentSoiree.nomSoiree}}</h3>
+            <p>Lieu : {{currentSoiree.lieu}}</p>
+            <p>Date : {{currentSoiree.dateHeure | date: 'dd/MM/yyyy'}}</p>
+            <p>Prix : {{currentSoiree.prix | currency: 'EUR'}}</p>
+            <p>Capacite maximale : {{currentSoiree.capaciteMax}}</p>
+            <p>Theme : {{currentSoiree.theme}}</p>
+        </div>
+    </section>
+</div>

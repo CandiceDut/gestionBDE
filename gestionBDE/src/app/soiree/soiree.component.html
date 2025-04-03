@@ -1,0 +1,16 @@
+<div class="list-soiree">
+    <button class="button" (click)="goToCreateSoiree()">Ajouter une soirée</button>
+    <ng-container *ngFor="let uneSoiree of listSoiree">
+        <mat-card appearance="outlined">
+            <mat-card-content class="mat-card">
+                <div>Nom : {{uneSoiree.nomSoiree}}<br>
+                Lieu : {{uneSoiree.lieu}}<br>
+                Date et heure : {{uneSoiree.dateHeure}}<br>
+                Prix : {{uneSoiree.prix}}<br>
+                Capacité maximale : {{uneSoiree.capaciteMax}}<br>
+                Thème : {{uneSoiree.theme}}<br>
+                <button>Modifier</button><button>Supprimer</button></div><br>
+            </mat-card-content>
+        </mat-card><br>
+    </ng-container>
+</div>

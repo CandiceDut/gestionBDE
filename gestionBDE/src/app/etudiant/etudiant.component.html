@@ -1,0 +1,14 @@
+<div class="list-etudiant">
+    <button>Ajouter un étudiant</button>
+    <ng-container *ngFor="let unEtudiant of listEtudiant">
+        <mat-card appearance="outlined">
+            <mat-card-content class="mat-card">
+                <div>Nom : {{unEtudiant.nomEtud}}<br>
+                Prénom : {{unEtudiant.prenomEtud}}<br>
+                Email : {{unEtudiant.email}}<br>
+                Numéro de téléphone : {{unEtudiant.numTel}}<br>
+                <button>Modifier</button><button>Supprimer</button></div><br>
+            </mat-card-content>
+        </mat-card><br>
+    </ng-container>
+</div>
