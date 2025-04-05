@@ -1,4 +1,4 @@
-<div class="list-soiree">
+<!-- <div class="list-soiree">
     <button class="button" (click)="goToCreateSoiree()">Ajouter une soirée</button>
     <ng-container *ngFor="let uneSoiree of listSoiree">
         <mat-card appearance="outlined">
@@ -13,4 +13,31 @@
             </mat-card-content>
         </mat-card><br>
     </ng-container>
-</div>
+</div> -->
+
+<h1 style="text-align: center;">Toutes les soirées</h1>
+<div class="list-soiree">
+    <div class="soiree-header">
+      <button mat-raised-button color="primary" (click)="goToCreateSoiree()">Ajouter une soirée</button>
+    </div>
+  
+    <div class="soiree-grid">
+      <ng-container *ngFor="let uneSoiree of listSoiree">
+        <mat-card class="soiree-card" appearance="outlined">
+          <mat-card-title>{{ uneSoiree.nomSoiree }}</mat-card-title>
+          <mat-card-content>
+            <p>📍 Lieu : {{ uneSoiree.lieu }}</p>
+            <p>🕒 Date : {{ uneSoiree.dateHeure | date: 'dd/MM/yyyy HH:mm' }}</p>
+            <p>💶 Prix : {{ uneSoiree.prix | currency: 'EUR' }}</p>
+            <p>👥 Capacité : {{ uneSoiree.capaciteMax }}</p>
+            <p>🎉 Thème : {{ uneSoiree.theme }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="accent">Modifier</button>
+            <button mat-button color="warn">Supprimer</button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+  

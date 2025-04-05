@@ -1,15 +1,22 @@
+<h1 style="text-align: center;">Toutes les réservations</h1>
 <div class="list-reservation">
-    <button class="button" (click)="goToCreateReservation()">Ajouter une réservation</button>
-    <ng-container *ngFor="let uneReservation of listReservation">
-        <mat-card appearance="outlined">
-            <mat-card-content class="mat-card">
-                <div>Nom étudiant : {{uneReservation.idEtud}}<br>
-                Nom soirée : {{uneReservation.idSoiree}}<br>
-                Date réservation : {{uneReservation.dateReserv}}<br>
-                Status réservation : {{uneReservation.statusReserv}}<br>
-                <button>Modifier</button><button>Supprimer</button>
-                </div>
+    <div class="reservation-header">
+        <button mat-raised-button color="primary" (click)="goToCreateReservation()">Ajouter une réservation</button>
+      </div>
+    
+      <div class="reservation-grid">
+        <ng-container *ngFor="let uneReservation of listReservation">
+          <mat-card class="reservation-card" appearance="outlined">
+            <mat-card-title>{{uneReservation.idSoiree}} - {{uneReservation.idEtud}}</mat-card-title>
+            <mat-card-content>
+              <p>Date réservation : {{uneReservation.dateReserv}}</p>
+              <p>Status réservation : {{uneReservation.statusReserv}}</p>
             </mat-card-content>
-        </mat-card><br>
-    </ng-container>
+            <mat-card-actions>
+              <button mat-button color="accent">Modifier</button>
+              <button mat-button color="warn">Supprimer</button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+      </div>
 </div>

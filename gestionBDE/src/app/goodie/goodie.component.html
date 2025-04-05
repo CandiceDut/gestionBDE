@@ -1,14 +1,23 @@
+<h1 style="text-align: center;">Tous les goodies</h1>
 <div class="list-goodie">
-    <button>Ajouter un goodie</button>
-    <ng-container *ngFor="let unGoodie of listGoodie">
-        <mat-card appearance="outlined">
-            <mat-card-content class="mat-card">
-                <div>Nom du goodie : {{unGoodie.nomGoodie}}<br>
-                Quantité : {{unGoodie.quantite}}<br>
-                Description : {{unGoodie.description}}<br>
-                Coût unitaire : {{unGoodie.coutUnitaire}}<br>
-                <button>Modifier</button><button>Supprimer</button></div><br>
+    <div class="goodie-header">
+        <button mat-raised-button color="primary" (click)="goToCreateGoodie()">Ajouter un goodie</button>
+      </div>
+    
+      <div class="goodie-grid">
+        <ng-container *ngFor="let unGoodie of listGoodie">
+          <mat-card class="goodie-card" appearance="outlined">
+            <mat-card-title>{{unGoodie.nomGoodie}}</mat-card-title>
+            <mat-card-content>
+              <p>Description : {{unGoodie.description}}</p>
+              <p>Quantité : {{unGoodie.quantite}}</p>
+              <p>Coût unitaire : {{unGoodie.coutUnitaire | currency: 'EUR' }}</p>
             </mat-card-content>
-        </mat-card><br>
-    </ng-container>
+            <mat-card-actions>
+              <button mat-button color="accent">Modifier</button>
+              <button mat-button color="warn">Supprimer</button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+      </div>
 </div>

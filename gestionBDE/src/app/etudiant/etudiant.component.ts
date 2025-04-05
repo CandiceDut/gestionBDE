@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Etudiant } from '../models/etudiant.model';
 import { EtudiantsService } from '../services/etudiants.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-etudiant',
@@ -13,9 +14,13 @@ export class EtudiantComponent implements OnInit {
   @Input() Etudiant!: Etudiant;
   listEtudiant!:Etudiant[];
 
-  constructor(private myEtudiantsService: EtudiantsService){}
+  constructor(private myEtudiantsService: EtudiantsService, private router: Router){}
   
   ngOnInit():void{
     this.myEtudiantsService.getEtudiants().subscribe((Etudiants) => {this.listEtudiant = Etudiants;});
+  }
+  
+  goToCreateEtudiant(){
+    this.router.navigateByUrl('/');
   }
 }

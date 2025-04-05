@@ -1,8 +1,32 @@
-<h1>Gestion BDE</h1>
-<nav>
-    <a class="button" routerLink="/">Accueil</a> |
-    <a class="button" routerLink="/soiree">Liste des soirées</a> |
-    <a class="button" routerLink="/reservation">Liste des réservations</a> |
-    <a class="button" routerLink="/etudiant">Liste des étudiants</a> |
-    <a class="button" routerLink="/goodie">Liste des goodies</a>
-</nav>
+<mat-toolbar color="primary" class="main-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()" class="mobile-toggle" aria-label="Menu" >
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+    <div class="title">Gestion BDE</div>
+    <span class="spacer"></span>
+  
+    <nav class="desktop-nav">
+      <button mat-button routerLink="/">Accueil</button>
+      <button mat-button routerLink="/soiree">Soirées</button>
+      <button mat-button routerLink="/reservation">Réservations</button>
+      <button mat-button routerLink="/etudiant">Étudiants</button>
+      <button mat-button routerLink="/goodie">Goodies</button>
+    </nav>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="over" class="mobile-sidenav">
+      <button mat-button routerLink="/" (click)="sidenav.close()">Accueil</button>
+      <button mat-button routerLink="/soiree" (click)="sidenav.close()">Soirées</button>
+      <button mat-button routerLink="/reservation" (click)="sidenav.close()">Réservations</button>
+      <button mat-button routerLink="/etudiant" (click)="sidenav.close()">Étudiants</button>
+      <button mat-button routerLink="/goodie" (click)="sidenav.close()">Goodies</button>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

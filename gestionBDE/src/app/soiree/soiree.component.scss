@@ -1,3 +1,41 @@
-.mat-card{
-    background-color: aliceblue;
-}
+.list-soiree {
+    padding: 2rem;
+  
+    .soiree-header {
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+  
+    .soiree-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  
+    .soiree-card {
+      padding: 1rem;
+      border-radius: 12px;
+      transition: box-shadow 0.3s ease;
+  
+      &:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+  
+      mat-card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+  
+      mat-card-content p {
+        margin: 0.25rem 0;
+      }
+  
+      mat-card-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+      }
+    }
+  }
+  

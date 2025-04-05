@@ -1,14 +1,22 @@
+<h1 style="text-align: center;">Tous les étudiants</h1>
 <div class="list-etudiant">
-    <button>Ajouter un étudiant</button>
-    <ng-container *ngFor="let unEtudiant of listEtudiant">
-        <mat-card appearance="outlined">
-            <mat-card-content class="mat-card">
-                <div>Nom : {{unEtudiant.nomEtud}}<br>
-                Prénom : {{unEtudiant.prenomEtud}}<br>
-                Email : {{unEtudiant.email}}<br>
-                Numéro de téléphone : {{unEtudiant.numTel}}<br>
-                <button>Modifier</button><button>Supprimer</button></div><br>
-            </mat-card-content>
-        </mat-card><br>
-    </ng-container>
+    <div class="etudiant-header">
+      <button mat-raised-button color="primary" (click)="goToCreateEtudiant()">Ajouter un étudiant</button>
+    </div>
+  
+    <div class="etudiant-grid">
+      <ng-container *ngFor="let unEtudiant of listEtudiant">
+        <mat-card class="etudiant-card" appearance="outlined">
+          <mat-card-title>{{unEtudiant.nomEtud}} {{unEtudiant.prenomEtud}}</mat-card-title>
+          <mat-card-content>
+            <p>Email : {{unEtudiant.email}}</p>
+            <p>Numéro de téléphone : {{unEtudiant.numTel}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="accent">Modifier</button>
+            <button mat-button color="warn">Supprimer</button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+    </div>
 </div>
