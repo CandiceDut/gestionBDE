@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { SoireeComponent } from './soiree/soiree.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import {MatCardModule} from '@angular/material/card';
 import { ReservationComponent } from './reservation/reservation.component';
 import { HomeComponent } from './home/home.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
@@ -16,6 +15,8 @@ import { NewReservationComponent } from './new-reservation/new-reservation.compo
 import { NewSoireeComponent } from './new-soiree/new-soiree.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

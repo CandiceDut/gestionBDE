@@ -8,7 +8,7 @@ import { SoireesService } from '../services/soirees.service';
   selector: 'app-new-soiree',
   standalone: false,
   templateUrl: './new-soiree.component.html',
-  styleUrl: './new-soiree.component.scss'
+  styleUrls: ['./new-soiree.component.scss']
 })
 export class NewSoireeComponent implements OnInit {
   formulaire!: FormGroup;
@@ -18,15 +18,14 @@ export class NewSoireeComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulaire = this.formBuilder.group({
-      nomSoiree: [null,[Validators.required, Validators.minLength(4)]],
-      lieu: [null,[Validators.required, Validators.minLength(6)]],
-      dateHeure: [null,[Validators.required]],
-      prix: [null,[Validators.required, Validators.min(0)]],
-      capaciteMax: [null,[Validators.required, Validators.min(0)]],
-      theme: [null,[Validators.required, Validators.minLength(3)]],
-    },
-    {updateOn: 'blur'}
-  );
+      nomSoiree: [null, [Validators.required, Validators.minLength(4)]],
+      lieu: [null, [Validators.required, Validators.minLength(6)]],
+      dateHeure: [null, [Validators.required]],
+      prix: [null, [Validators.required, Validators.min(0)]],
+      capaciteMax: [null, [Validators.required, Validators.min(0)]],
+      theme: [null, [Validators.required, Validators.minLength(3)]],
+    }, { updateOn: 'blur' });
+
     this.formulaire.valueChanges.subscribe((formValue) => {
       this.currentSoiree = {
         idSoiree: 0,
@@ -40,27 +39,33 @@ export class NewSoireeComponent implements OnInit {
     });
   }
 
-  ajout(){
-    let newSoiree: Soiree = {
+  ajout(): void {
+    if (this.formulaire.invalid) {
+      return;  // Ne rien faire si le formulaire est invalide
+    }
+
+    let dateHeure = new Date(this.formulaire.get('dateHeure')?.value);
+
+    let formattedDateHeure = dateHeure.toISOString().replace('T', ' ').substring(0, 19);
+
+    const newSoiree: Soiree = {
       idSoiree: 0,
       nomSoiree: this.formulaire.get('nomSoiree')?.value,
       lieu: this.formulaire.get('lieu')?.value,
-      dateHeure: this.formulaire.get('dateHeure')?.value,
+      dateHeure: formattedDateHeure,
       prix: this.formulaire.get('prix')?.value,
       capaciteMax: this.formulaire.get('capaciteMax')?.value,
       theme: this.formulaire.get('theme')?.value
     };
 
     this.Soireeservice.addSoiree(newSoiree).subscribe({
-      next : Soiree =>
-      {
-        this.router.navigateByUrl('/catalog')
+      next: () => {
+        this.router.navigateByUrl('/soiree');
       },
-      error : err =>
-      {
-        console.error('Observable ajout CD a émis une erreur : ' + err);
-        alert ("Désolé le CD n'a pas pu être ajouté");
+      error: (err) => {
+        console.error('Erreur lors de l\'ajout de la soirée :', err);
+        alert("Désolé, la soirée n'a pas pu être ajoutée.");
       }
-    })    
+    });
   }
 }

@@ -1,13 +1,11 @@
 <div class="monForm" style="text-align: center;">
     <section class="subForm saisieForm">
         <h2 style="text-align: center;">Nouvelle soirée</h2>
-        <form [formGroup]="formulaire">
-            <mat-form-field>
-                <mat-label for="nomSoiree">Nom</mat-label><br>
-                <input matInput type="text" class="form-control" id="nomSoiree" formControlName="nomSoiree">
-                <div *ngIf="formulaire.get('nomSoiree')?.invalid &&
-                        formulaire.get('nomSoiree')?.errors &&
-                        (formulaire.get('nomSoiree')?.dirty || formulaire.get('nomSoiree'))">
+        <form [formGroup]="formulaire" (ngSubmit)="ajout()">
+            <div class="form-group">
+                <label for="nomSoiree">Nom</label><br>
+                <input type="text" class="form-control" id="nomSoiree" formControlName="nomSoiree">
+                <div *ngIf="formulaire.get('nomSoiree')?.invalid && (formulaire.get('nomSoiree')?.dirty || formulaire.get('nomSoiree'))">
                     <small class="text-danger" *ngIf="formulaire.get('nomSoiree')?.hasError('required')">
                         Ce champ est requis.
                     </small>
@@ -15,10 +13,9 @@
                         Ce champ doit comporter au moins 4 caractères.
                     </small>
                 </div>
-            </mat-form-field>
+            </div>
             <div class="form-group">
                 <label for="lieu">Lieu</label><br>
-                <mat-form-field>
                     <input type="text" class="form-control" id="lieu" formControlName="lieu"/>
                     <div *ngIf="formulaire.get('lieu')?.invalid &&
                             formulaire.get('lieu')?.errors &&
@@ -30,13 +27,11 @@
                             Ce champ doit comporter au moins 6 caractères.
                         </small>
                     </div>
-                </mat-form-field>
             </div>
             <div class="form-group">
                 <label for="dateHeure">Date et heure</label><br>
                 <div class="input">
-                    <input type="date" class="form-control" id="dateHeure" formControlName="dateHeure"/>
-                    <input type="time" class="form-control" id="dateHeure" formControlName="dateHeure"/>
+                    <input type="datetime-local" class="form-control" id="dateHeure" formControlName="dateHeure"/>
                     <div *ngIf="formulaire.get('dateHeure')?.invalid &&
                             formulaire.get('dateHeure')?.errors &&
                             (formulaire.get('dateHeure')?.dirty || formulaire.get('dateHeure'))">
@@ -88,15 +83,15 @@
                     </div>
                 </div>
             </div><br>
-            <button type="submit" (click)="ajout()" [disabled]="formulaire.invalid">Valider</button>
-        </form>
+            <button type="submit" [disabled]="formulaire.invalid">Valider</button>
+</form>
     </section>
     <section class="subForm visuForm">
         <h2 style="text-align: center;">Vue de la soirée</h2>
         <div *ngIf="currentSoiree !== undefined">
             <h3>{{currentSoiree.nomSoiree}}</h3>
             <p>Lieu : {{currentSoiree.lieu}}</p>
-            <p>Date : {{currentSoiree.dateHeure | date: 'dd/MM/yyyy'}}</p>
+            <p>Date et Heure : {{ currentSoiree.dateHeure | date: 'dd/MM/yyyy HH:mm' }}</p>
             <p>Prix : {{currentSoiree.prix | currency: 'EUR'}}</p>
             <p>Capacite maximale : {{currentSoiree.capaciteMax}}</p>
             <p>Theme : {{currentSoiree.theme}}</p>

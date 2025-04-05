@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Soiree;
 
 class SoireeController extends Controller
@@ -22,16 +23,31 @@ class SoireeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nomSoiree'=>'required|string|max:255',
-            'lieu'=>'required|string|max:255',
-            'dateHeure'=>'required|dateTime|max:255',
-            'prix'=>'required|int|max:10',
-            'capaciteMax'=>'required|int|max:100',
-            'theme'=>'required|string|max:255'
+        $validator = Validator::make($request->all(), [
+            'nomSoiree' => 'required|min:4',
+            'lieu' => 'required|min:6',
+            'dateHeure' => 'required|date',  // Validation de la date
+            'prix' => 'required|numeric|min:0',
+            'capaciteMax' => 'required|numeric|min:0',
+            'theme' => 'required|min:3',
         ]);
-        $soiree = Soiree::create($request->all());
-        return response()->json($soiree, 201);
+    
+        // Si la validation échoue
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+    
+        // Code pour enregistrer la soirée dans la base de données
+        $soiree = new Soiree();
+        $soiree->nomSoiree = $request->nomSoiree;
+        $soiree->lieu = $request->lieu;
+        $soiree->dateHeure = $request->dateHeure; // S'assurer que la date est bien formatée
+        $soiree->prix = $request->prix;
+        $soiree->capaciteMax = $request->capaciteMax;
+        $soiree->theme = $request->theme;
+        $soiree->save();
+    
+        return response()->json(['message' => 'Soirée ajoutée avec succès!', 'soiree' => $soiree], 201);
     }
 
     /**

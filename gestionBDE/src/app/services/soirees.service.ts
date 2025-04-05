@@ -20,14 +20,15 @@ export class SoireesService {
 
   addSoiree(nouvSoiree: Soiree): Observable<Soiree> {
     return this.getSoirees().pipe(
-      switchMap(Soirees =>
-      {
-      let maxId = 0;
-      Soirees.forEach (Soiree => { maxId = (Soiree.idSoiree > maxId ? Soiree.idSoiree : maxId); } );
-      nouvSoiree.idSoiree = maxId+1;
-      return this.http.post<Soiree>('http://127.0.0.1:8000/api/soiree', nouvSoiree);
-      }
-     ));
-     
+      switchMap(Soirees => {
+        let maxId = 0;
+        Soirees.forEach(Soiree => {
+          maxId = (Soiree.idSoiree > maxId ? Soiree.idSoiree : maxId);
+        });
+        nouvSoiree.idSoiree = maxId + 1;
+        return this.http.post<Soiree>('http://127.0.0.1:8000/api/soiree', nouvSoiree);
+      })
+    );
   }
+  
 }
