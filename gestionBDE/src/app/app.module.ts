@@ -20,7 +20,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatStepperModule} from '@angular/material/stepper';
+import {AsyncPipe} from '@angular/common';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -47,7 +49,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatStepperModule,
+    AsyncPipe,
+    MatTableModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

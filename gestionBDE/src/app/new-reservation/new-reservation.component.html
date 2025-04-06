@@ -1,4 +1,89 @@
-<h1 class="titre" style="text-align: center;">Ajouter une réservation</h1>
+<h1 class="titre" style="text-align: center;">Ajouter une réservation</h1><br>
+<mat-stepper
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup" label="Choisir un étudiant">
+        <form [formGroup]="firstFormGroup">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            
+            <!-- Position Column -->
+            <ng-container matColumnDef="idEtud">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.idEtud}} </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="nomEtud">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.nomEtud}} </td>
+            </ng-container>
+            
+            <!-- Weight Column -->
+            <ng-container matColumnDef="prenomEtud">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.prenomEtud}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="numTel">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.numTel}} </td>
+            </ng-container>
+            
+            <!-- Selection Column -->
+            <ng-container matColumnDef="selectionner">
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let element"> <button mat-button style="color:white;">Sélectionner</button> </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>           
+        <div>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Choisir une soirée">
+        <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                    required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Informations complémentaires">
+        <form [formGroup]="thirdFormGroup">
+        <mat-form-field>
+            <mat-label>Phone number</mat-label>
+            <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Terminé</ng-template>
+        <p>You are now done.</p>
+        <div>
+        <button mat-button matStepperPrevious>Back</button>
+        </div>
+    </mat-step>
+</mat-stepper>
+  
 <!-- <div class="monForm">
     <section class="subForm saisieForm">
         <h2 style="text-align: center;">Nouvelle réservation</h2>
