@@ -4,6 +4,11 @@
     .etudiant-header {
       text-align: left;
       margin-bottom: 1.5rem;
+
+      button{
+        background-color: rgba(208, 103, 38);
+        color: white;
+      }
     }
   
     .etudiant-grid {
@@ -39,3 +44,6 @@
     }
   }
   
+.titre{
+  color: rgba(255,53,0,1);
+}

@@ -7,8 +7,9 @@
   
     .subForm {
       flex: 1 1 50%;
-      background-color: #f9f9f9;
-      color: black;
+      background: rgb(255,53,0);
+      background: radial-gradient(circle, rgba(255,53,0,0.7) 0%, rgba(208,103,38,0.7) 100%);
+      color: white;
       border-radius: 12px;
       padding: 1.5rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -48,6 +49,8 @@
         button {
           align-self: flex-start;
           margin-top: 1rem;
+          background: rgb(255,53,0, 0.5);
+          color: white;
         }
       }
     }
@@ -72,4 +75,8 @@
         width: 100%;
       }
     }
+  }
+
+  .titre{
+    color: rgba(255,53,0,1);
   }
