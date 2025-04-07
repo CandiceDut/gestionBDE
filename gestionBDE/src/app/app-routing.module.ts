@@ -30,11 +30,11 @@ const routes: Routes = [
     component: GoodieComponent
   },
   {
-    path: 'createReservation',
+    path: 'reservationForm',
     component: NewReservationComponent
   },
   {
-    path: 'createSoiree',
+    path: 'soireeForm',
     component: NewSoireeComponent
   },
 ];

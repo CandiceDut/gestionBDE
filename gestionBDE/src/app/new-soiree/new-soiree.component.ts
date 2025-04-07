@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Soiree } from '../models/soiree.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SoireesService } from '../services/soirees.service';
 
 @Component({
@@ -13,10 +13,19 @@ import { SoireesService } from '../services/soirees.service';
 export class NewSoireeComponent implements OnInit {
   formulaire!: FormGroup;
   currentSoiree!: Soiree;
+  mode: 'ajout' | 'modif' = 'ajout';
 
-  constructor(private Soireeservice: SoireesService, private formBuilder: FormBuilder, private router : Router) {}
+  constructor(private Soireeservice: SoireesService, private formBuilder: FormBuilder,private route: ActivatedRoute, private router : Router) {}
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.mode = 'modif';
+      this.loadSoiree(+id);
+    } else {
+      this.mode = 'ajout';
+    }
+
     this.formulaire = this.formBuilder.group({
       nomSoiree: [null, [Validators.required, Validators.minLength(4)]],
       lieu: [null, [Validators.required, Validators.minLength(6)]],
@@ -36,6 +45,13 @@ export class NewSoireeComponent implements OnInit {
         capaciteMax: formValue.capaciteMax,
         theme: formValue.theme
       };
+    });
+  }
+
+  loadSoiree(id: number) {
+    this.Soireeservice.getSoireeById(id).subscribe(soiree => {
+      this.currentSoiree = soiree;
+      this.formulaire.patchValue(soiree);
     });
   }
 
@@ -67,5 +83,17 @@ export class NewSoireeComponent implements OnInit {
         alert("Désolé, la soirée n'a pas pu être ajoutée.");
       }
     });
+  }
+
+  onSubmit() {
+    if (this.mode === 'ajout') {
+      this.Soireeservice.addSoiree(this.formulaire.value).subscribe(() => {
+        this.router.navigate(['/soiree']);
+      });
+    } else {
+      this.Soireeservice.updateSoiree(this.currentSoiree!.idSoiree, this.formulaire.value).subscribe(() => {
+        this.router.navigate(['/liste-soirees']);
+      });
+    }
   }
 }

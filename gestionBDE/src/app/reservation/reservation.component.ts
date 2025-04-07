@@ -21,6 +21,6 @@ export class ReservationComponent implements OnInit {
   }
   
   goToCreateReservation(){
-    this.router.navigateByUrl('/createReservation');
+    this.router.navigateByUrl('/reservationForm');
   }
 }
