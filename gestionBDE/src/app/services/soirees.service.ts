@@ -34,4 +34,8 @@ export class SoireesService {
   updateSoiree(idSoiree: number, ModifSoiree: Soiree){
     return this.http.post<Soiree>(`http://127.0.0.1:8000/api/soiree/${idSoiree}`, ModifSoiree);
   }
+  
+  deleteSoiree(idSoiree: number){
+    return this.http.delete<Soiree>(`http://127.0.0.1:8000/api/soiree/${idSoiree}`);
+  }
 }

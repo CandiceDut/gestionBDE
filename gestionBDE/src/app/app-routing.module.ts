@@ -7,6 +7,8 @@ import { EtudiantComponent } from './etudiant/etudiant.component';
 import { GoodieComponent } from './goodie/goodie.component';
 import { NewReservationComponent } from './new-reservation/new-reservation.component';
 import { NewSoireeComponent } from './new-soiree/new-soiree.component';
+import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
+import { FormGoodieComponent } from './form-goodie/form-goodie.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
   {
     path: 'soireeForm',
     component: NewSoireeComponent
+  },
+  {
+    path: 'etudiantForm',
+    component: FormEtudiantComponent
+  },
+  {
+    path: 'GoodieForm',
+    component: FormGoodieComponent
   },
 ];
 

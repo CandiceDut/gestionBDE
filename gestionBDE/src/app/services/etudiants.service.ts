@@ -30,4 +30,12 @@ export class EtudiantsService {
      ));
      
   }
+
+  updateEtudiant(idEtud: number, ModifEtudiant: Etudiant){
+    return this.http.post<Etudiant>(`http://127.0.0.1:8000/api/etudiant/${idEtud}`, ModifEtudiant);
+  }
+
+  deleteEtudiant(idEtud: number){
+    return this.http.delete<Etudiant>(`http://127.0.0.1:8000/api/etudiant/${idEtud}`);
+  }
 }

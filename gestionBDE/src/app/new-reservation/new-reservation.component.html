@@ -6,40 +6,24 @@
         <form [formGroup]="firstFormGroup">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             
-            <!-- Position Column -->
-            <ng-container matColumnDef="idEtud">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.idEtud}} </td>
-            </ng-container>
-            
-            <!-- Name Column -->
             <ng-container matColumnDef="nomEtud">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <th mat-header-cell *matHeaderCellDef> Nom </th>
                 <td mat-cell *matCellDef="let element"> {{element.nomEtud}} </td>
             </ng-container>
             
-            <!-- Weight Column -->
             <ng-container matColumnDef="prenomEtud">
-                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <th mat-header-cell *matHeaderCellDef> Prénom </th>
                 <td mat-cell *matCellDef="let element"> {{element.prenomEtud}} </td>
             </ng-container>
             
-            <!-- Symbol Column -->
             <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <th mat-header-cell *matHeaderCellDef> Mail </th>
                 <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="numTel">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                <td mat-cell *matCellDef="let element"> {{element.numTel}} </td>
-            </ng-container>
             
-            <!-- Selection Column -->
             <ng-container matColumnDef="selectionner">
                 <th mat-header-cell *matHeaderCellDef>  </th>
-                <td mat-cell *matCellDef="let element"> <button mat-button style="color:white;">Sélectionner</button> </td>
+                <td mat-cell *matCellDef="let element"> <button mat-button style="color:white;" (click)="selectionnerEtudiant(element)">Sélectionner</button> </td>
             </ng-container>
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -52,138 +36,40 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Choisir une soirée">
         <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                    required>
-        </mat-form-field>
+            <table mat-table [dataSource]="dataSourceSoiree" class="mat-elevation-z8">
+            
+                <ng-container matColumnDef="nomSoiree">
+                    <th mat-header-cell *matHeaderCellDef> Nom </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nomSoiree}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="lieu">
+                    <th mat-header-cell *matHeaderCellDef> Lieu </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lieu}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="theme">
+                    <th mat-header-cell *matHeaderCellDef> Thême </th>
+                    <td mat-cell *matCellDef="let element"> {{element.theme}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="capaciteMax">
+                    <th mat-header-cell *matHeaderCellDef> Capacité maximale </th>
+                    <td mat-cell *matCellDef="let element"> {{element.capaciteMax}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="selectionner">
+                    <th mat-header-cell *matHeaderCellDef>  </th>
+                    <td mat-cell *matCellDef="let element"> <button mat-button style="color:white;" (click)="selectionnerSoiree(element)">Sélectionner</button> </td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsSoiree"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsSoiree;"></tr>
+                </table>   
         <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button (click)="ajout()">Enregistrer</button>
         </div>
         </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" label="Informations complémentaires">
-        <form [formGroup]="thirdFormGroup">
-        <mat-form-field>
-            <mat-label>Phone number</mat-label>
-            <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
-        </mat-form-field>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-        </div>
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Terminé</ng-template>
-        <p>You are now done.</p>
-        <div>
-        <button mat-button matStepperPrevious>Back</button>
-        </div>
     </mat-step>
 </mat-stepper>
-  
-<!-- <div class="monForm">
-    <section class="subForm saisieForm">
-        <h2 style="text-align: center;">Nouvelle réservation</h2>
-        <form [formGroup]="formulaire">
-            <div class="form-group">
-                <label for="title">Titre</label><br>
-                <div class="input">
-                    <input type="text" class="form-control" id="title" formControlName="title"/>
-                    <div *ngIf="formulaire.get('title')?.invalid &&
-                            formulaire.get('title')?.errors &&
-                            (formulaire.get('title')?.dirty || formulaire.get('title'))">
-                        <small class="text-danger" *ngIf="formulaire.get('title')?.hasError('required')">
-                            Ce champ est requis.
-                        </small>
-                        <small class="text-danger" *ngIf="formulaire.get('title')?.hasError('minlength')">
-                            Ce champ doit comporter au moins 6 caractères.
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="author">Auteur</label><br>
-                <div class="input">
-                    <input type="text" class="form-control" id="author" formControlName="author"/>
-                    <div *ngIf="formulaire.get('author')?.invalid &&
-                            formulaire.get('author')?.errors &&
-                            (formulaire.get('author')?.dirty || formulaire.get('author'))">
-                        <small class="text-danger" *ngIf="formulaire.get('author')?.hasError('required')">
-                            Ce champ est requis.
-                        </small>
-                        <small class="text-danger" *ngIf="formulaire.get('author')?.hasError('minlength')">
-                            Ce champ doit comporter au moins 6 caractères.
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="price">Prix</label><br>
-                <div class="input">
-                    <input type="number" class="form-control" id="price" formControlName="price"/>
-                    <div *ngIf="formulaire.get('price')?.invalid &&
-                            formulaire.get('price')?.errors &&
-                            (formulaire.get('price')?.dirty || formulaire.get('price'))">
-                        <small class="text-danger" *ngIf="formulaire.get('price')?.hasError('required')">
-                            Ce champ est requis.
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="thumbnail">Couverture</label><br>
-                <div class="input">
-                    <input type="text" class="form-control" id="thumbnail" formControlName="thumbnail"/>
-                    <div *ngIf="formulaire.get('thumbnail')?.invalid &&
-                            formulaire.get('thumbnail')?.errors &&
-                            (formulaire.get('thumbnail')?.dirty || formulaire.get('thumbnail'))">
-                        <small class="text-danger" *ngIf="formulaire.get('thumbnail')?.hasError('required')">
-                            Ce champ est requis.
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="dateDeSortie">Date De Sortie</label><br>
-                <div class="input">
-                    <input type="date" class="form-control" id="dateDeSortie" formControlName="dateDeSortie"/>
-                    <div *ngIf="formulaire.get('dateDeSortie')?.invalid &&
-                            formulaire.get('dateDeSortie')?.errors &&
-                            (formulaire.get('dateDeSortie')?.dirty || formulaire.get('dateDeSortie'))">
-                        <small class="text-danger" *ngIf="formulaire.get('dateDeSortie')?.hasError('required')">
-                            Ce champ est requis.
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="quantite">Quantite</label><br>
-                <div class="input">
-                    <input type="number" class="form-control" id="quantite" formControlName="quantite"/>
-                    <div *ngIf="formulaire.get('quantite')?.invalid &&
-                            formulaire.get('quantite')?.errors &&
-                            (formulaire.get('quantite')?.dirty || formulaire.get('quantite'))">
-                        <small class="text-danger" *ngIf="formulaire.get('quantite')?.hasError('required')">
-                            Ce champ est requis.
-                        </small>
-                    </div>
-                </div>
-            </div><br>
-            <button type="submit" (click)="ajout()" [disabled]="formulaire.invalid">Valider</button>
-        </form>
-    </section>
-    <section class="subForm visuForm">
-        <h2 style="text-align: center;">Vue du CD</h2>
-        <div *ngIf="currentCD !== undefined">
-            <h3>{{currentCD.title}}</h3>
-            <p>Sortie le : {{currentCD.dateDeSortie | date: 'dd/MM/yyyy'}}</p>
-            <p>Auteur / groupe : {{currentCD.author}}</p>
-            <p>Prix : {{currentCD.price | currency: 'EUR'}}</p>
-            <p>Quantité : {{currentCD.quantite}}</p>
-            <img [src]="currentCD.thumbnail" alt="{{currentCD.title}}">
-        </div>
-    </section>
-</div> -->

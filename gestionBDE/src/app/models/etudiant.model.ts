@@ -3,9 +3,9 @@ export class Etudiant {
     nomEtud!: string;
     prenomEtud!: string;
     email!: string;
-    numTel!:number;
+    numTel!:string;
 
-    constructor(idEtud:number,nomEtud:string,prenomEtud: string,email: string,numTel:number){
+    constructor(idEtud:number,nomEtud:string,prenomEtud: string,email: string,numTel:string){
         this.idEtud=idEtud;
         this.nomEtud=nomEtud;
         this.prenomEtud=prenomEtud;

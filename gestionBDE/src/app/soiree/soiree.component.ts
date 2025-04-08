@@ -25,10 +25,12 @@ export class SoireeComponent implements OnInit {
   }
   
   goToModifySoiree(id: number) {
-    this.router.navigate(['/soireeForm', id]);
+    this.router.navigateByUrl(`/soireeForm/${id}`);
   }
   
-  deleteSoiree(){
-    this.router.navigateByUrl('/');
+  deleteLaSoiree(idSoiree: number){
+    this.mySoireesService.deleteSoiree(idSoiree).subscribe(() => {
+      this.router.navigate(['/soiree']);
+    });
   }
 }

@@ -30,4 +30,12 @@ export class GoodiesService {
      ));
      
   }
+  
+  updateGoodie(idGoodie: number, ModifGoodie: Goodie){
+    return this.http.post<Goodie>(`http://127.0.0.1:8000/api/stockGoodie/${idGoodie}`, ModifGoodie);
+  }
+  
+  deleteGoodie(idGoodie: number){
+    return this.http.delete<Goodie>(`http://127.0.0.1:8000/api/stockGoodie/${idGoodie}`);
+  }
 }

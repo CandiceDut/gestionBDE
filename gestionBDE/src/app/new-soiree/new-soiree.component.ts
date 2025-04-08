@@ -92,7 +92,7 @@ export class NewSoireeComponent implements OnInit {
       });
     } else {
       this.Soireeservice.updateSoiree(this.currentSoiree!.idSoiree, this.formulaire.value).subscribe(() => {
-        this.router.navigate(['/liste-soirees']);
+        this.router.navigate(['/soiree']);
       });
     }
   }

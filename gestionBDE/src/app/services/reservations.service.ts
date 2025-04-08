@@ -30,4 +30,8 @@ export class ReservationsService {
      ));
      
   }
+  
+  deleteReserv(idReserv: number){
+    return this.http.delete<Reservation>(`http://127.0.0.1:8000/api/reservation/${idReserv}`);
+  }
 }

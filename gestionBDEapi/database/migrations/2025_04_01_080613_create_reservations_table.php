@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id("idReserv")->required();
             $table->unsignedBigInteger("idEtud")->required();
             $table->unsignedBigInteger("idSoiree")->required();
-            $table->date("dateReserv")->required();
+            $table->dateTime("dateReserv")->required();
             $table->String("statusReserv")->required();
             $table->timestamps();
             $table->foreign("idEtud")->references('idEtud')->on('etudiants')->onDelete("cascade");

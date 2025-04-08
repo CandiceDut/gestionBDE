@@ -21,6 +21,16 @@ export class EtudiantComponent implements OnInit {
   }
   
   goToCreateEtudiant(){
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/etudiantForm');
+  }
+
+  goToModifyEtudiant(id: number){
+    this.router.navigateByUrl(`/etudiantForm/${id}`);
+  }
+  
+  deleteLEtudiant(idEtud: number){
+    this.myEtudiantsService.deleteEtudiant(idEtud).subscribe(() => {
+      this.router.navigate(['/etudiant']);
+    });
   }
 }

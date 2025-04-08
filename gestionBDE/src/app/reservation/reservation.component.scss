@@ -20,7 +20,10 @@
     .reservation-card {
       padding: 1rem;
       border-radius: 12px;
+      border-color: rgb(255,53,0);
       transition: box-shadow 0.3s ease;
+      background: rgb(255,53,0);
+      background: radial-gradient(circle, rgba(255,53,0,0.7) 0%, rgba(208,103,38,0.7) 100%);
   
       &:hover {
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);

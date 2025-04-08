@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatStepperModule} from '@angular/material/stepper';
 import {AsyncPipe} from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
+import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
+import { FormGoodieComponent } from './form-goodie/form-goodie.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {MatTableModule} from '@angular/material/table';
     EtudiantComponent,
     GoodieComponent,
     NewReservationComponent,
-    NewSoireeComponent
+    NewSoireeComponent,
+    FormEtudiantComponent,
+    FormGoodieComponent
   ],
   imports: [
     BrowserModule,

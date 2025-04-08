@@ -26,7 +26,7 @@ class EtudiantController extends Controller
             'nomEtud'=>'required|string|max:255',
             'prenomEtud'=>'required|string|max:255',
             'email'=>'required|string|max:255',
-            'numTel'=>'required|int|max:10'
+            'numTel'=>'required|string|size:10|regex:/^\d+$/'
         ]);
         $etudiant = Etudiant::create($request->all());
         return response()->json($etudiant, 201);
