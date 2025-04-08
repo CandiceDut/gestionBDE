@@ -28,9 +28,10 @@ export class GoodieComponent implements OnInit {
     this.router.navigateByUrl(`/GoodieForm/${id}`);
   }
   
-  deleteLGoodie(idGoodie: number){
+  deleteLeGoodie(idGoodie: number){
+    console.log(idGoodie);
     this.myGoodiesService.deleteGoodie(idGoodie).subscribe(() => {
-      this.router.navigate(['/goodie']);
+      this.router.navigateByUrl('/goodie');
     });
   }
 }

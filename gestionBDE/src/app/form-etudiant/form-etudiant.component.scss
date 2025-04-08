@@ -1,0 +1,82 @@
+.form-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2rem;
+  
+    .subForm {
+      flex: 1 1 50%;
+      background: rgb(255,53,0);
+      background: radial-gradient(circle, rgba(255,53,0,0.7) 0%, rgba(208,103,38,0.7) 100%);
+      color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+      h2 {
+        margin-bottom: 1rem;
+      }
+    }
+  
+    .saisieForm {
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+  
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+  
+          label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+          }
+  
+          input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          }
+  
+          small {
+            margin-top: 0.25rem;
+          }
+        }
+  
+        button {
+          align-self: flex-start;
+          margin-top: 1rem;
+          background: rgb(255,53,0, 0.5);
+          color: white;
+        }
+      }
+    }
+  
+    .visuForm {
+      h3 {
+        margin-top: 0;
+      }
+  
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+  
+  // Responsive : stack en colonne sur mobile
+  @media (max-width: 768px) {
+    .form-wrapper {
+      flex-direction: column;
+  
+      .subForm {
+        width: 100%;
+      }
+    }
+  }
+
+  .titre{
+    color: rgba(255,53,0,1);
+  }

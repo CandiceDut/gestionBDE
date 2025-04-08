@@ -1,0 +1,67 @@
+<h1 class="titre" style="text-align: center;">{{ mode === 'ajout' ? "Ajouter un étudiant" : "Modifier l'etudiant" }}</h1>
+<div class="form-wrapper">
+    <section class="subForm saisieForm">
+        <h2 style="text-align: center;">{{ mode === 'ajout' ? 'Nouvel étudiant' : "Modifier l'etudiant" }}</h2>
+        <form [formGroup]="formulaire" (ngSubmit)="ajout()">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nomEtud" />
+            <mat-error *ngIf="formulaire.get('nomEtud')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('nomEtud')?.hasError('minlength')">
+              Minimum 2 caractères.
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Prénom</mat-label>
+            <input matInput formControlName="prenomEtud" />
+            <mat-error *ngIf="formulaire.get('prenomEtud')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('prenomEtud')?.hasError('minlength')">
+              Minimum 2 caractères.
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>E-mail</mat-label>
+            <input matInput type="mail" formControlName="email" />
+            <mat-error *ngIf="formulaire.get('email')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('email')?.hasError('minlength')">
+              Minimum 5 caractères suivant ce modèle : "exemple&#64;test.com".
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Numéro de téléphone</mat-label>
+            <input matInput formControlName="numTel" />
+            <mat-error *ngIf="formulaire.get('numTel')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('numTel')?.hasError('pattern')">
+              10 chiffres requis.
+            </mat-error>
+          </mat-form-field>
+      
+          <button mat-raised-button color="primary" type="submit" [disabled]="formulaire.invalid">
+            Valider
+          </button>
+        </form>
+      </section>
+      
+      
+
+      <section class="subForm visuForm">
+        <h2 style="text-align: center;">Vue de l'étudiant</h2>
+        <div *ngIf="currentEtudiant !== undefined">
+          <h3>{{ currentEtudiant.nomEtud }} {{ currentEtudiant.prenomEtud }}</h3>
+          <p>Mail : {{ currentEtudiant.email }}</p>
+          <p>Numéro de téléphone : {{ currentEtudiant.numTel }}</p>
+        </div>
+      </section>
+      
+</div>

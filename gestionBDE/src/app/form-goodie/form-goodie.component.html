@@ -1,0 +1,68 @@
+<h1 class="titre" style="text-align: center;">{{ mode === 'ajout' ? "Ajouter un goodie" : "Modifier le goodie" }}</h1>
+<div class="form-wrapper">
+    <section class="subForm saisieForm">
+        <h2 style="text-align: center;">{{ mode === 'ajout' ? 'Nouveau goodie' : "Modifier le goodie" }}</h2>
+        <form [formGroup]="formulaire" (ngSubmit)="ajout()">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Nom du goodie</mat-label>
+            <input matInput formControlName="nomGoodie" />
+            <mat-error *ngIf="formulaire.get('nomGoodie')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('nomGoodie')?.hasError('minlength')">
+              Minimum 2 caractères.
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Quantité</mat-label>
+            <input matInput type="number" formControlName="quantite" />
+            <mat-error *ngIf="formulaire.get('quantite')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('quantite')?.hasError('min')">
+              Minimum 1 chiffre.
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" />
+            <mat-error *ngIf="formulaire.get('description')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('description')?.hasError('minlength')">
+              Minimum 5 caractères suivant ce modèle : "exemple&#64;test.com".
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Coût unitaire</mat-label>
+            <input matInput type="number" formControlName="coutUnitaire" />
+            <mat-error *ngIf="formulaire.get('coutUnitaire')?.hasError('required')">
+              Ce champ est requis.
+            </mat-error>
+            <mat-error *ngIf="formulaire.get('coutUnitaire')?.hasError('min')">
+              Minimum 1 chiffres.
+            </mat-error>
+          </mat-form-field>
+      
+          <button mat-raised-button color="primary" type="submit" [disabled]="formulaire.invalid">
+            Valider
+          </button>
+        </form>
+      </section>
+      
+      
+
+      <section class="subForm visuForm">
+        <h2 style="text-align: center;">Vue du goodie</h2>
+        <div *ngIf="currentGoodie !== undefined">
+          <h3>{{ currentGoodie.nomGoodie }}</h3>
+          <p>Description : {{ currentGoodie.description }}</p>
+          <p>Quantité : {{ currentGoodie.quantite }}</p>
+          <p>Coût unitaire : {{ currentGoodie.coutUnitaire }}</p>
+        </div>
+      </section>
+      
+</div>
